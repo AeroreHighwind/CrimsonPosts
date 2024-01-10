@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,16 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'crimson-posts';
+export class AppComponent implements OnInit {
+
+  private _firestore = inject(Firestore);
+  private _userProfileCollectionRef = collection(this._firestore, 'userProfiles')
+
+  ngOnInit(): void {
+    this.createUserProfile()
+  }
+  createUserProfile() {
+    return addDoc(this._userProfileCollectionRef, { user: "hellAAAAAAAo" });
+  }
+
 }
