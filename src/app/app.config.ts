@@ -11,5 +11,10 @@ import { environment } from '../environments/environment.development';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebase))), importProvidersFrom(provideAuth(() => getAuth())), importProvidersFrom(provideFirestore(() => getFirestore())), importProvidersFrom(provideDatabase(() => getDatabase())), importProvidersFrom(provideStorage(() => getStorage())), provideAnimations()]
+  providers: [provideRouter(routes), importProvidersFrom(provideFirebaseApp(() =>
+    initializeApp(environment.firebase))),
+  importProvidersFrom(provideAuth(() => getAuth())),
+  importProvidersFrom(provideFirestore(() => getFirestore())),
+  importProvidersFrom(provideDatabase(() => getDatabase())),
+  importProvidersFrom(provideStorage(() => getStorage())), provideAnimations()]
 };
